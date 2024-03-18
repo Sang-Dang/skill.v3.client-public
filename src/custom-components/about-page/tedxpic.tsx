@@ -32,7 +32,6 @@ const cardVariants: Variants = {
     },
     onscreen: {
         opacity: 1,
-        fontSize: window.innerWidth > 768 ? '3rem' : '2rem',
         y: 0,
         transition: {
             type: 'spring',

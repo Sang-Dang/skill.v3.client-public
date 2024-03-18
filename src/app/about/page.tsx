@@ -1,7 +1,7 @@
 import Header from '@/custom-components/Header'
 import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
-import TedxPic from './tedxpic'
-import ESCPic from './escpic'
+import TedxPic from '../../custom-components/about-page/tedxpic'
+import ESCPic from '../../custom-components/about-page/escpic'
 
 const links = [
     { name: 'Meet our leadership', href: '#' },

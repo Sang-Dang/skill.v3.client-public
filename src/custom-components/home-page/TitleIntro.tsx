@@ -10,7 +10,8 @@ export default function TitleIntro({ }: Props) {
       position: 'absolute',
       top: '50%',
       left: '45%',
-      transform: 'translate(-50%, -50%)'
+      transform: 'translate(-50%, -50%)',
+      userSelect: 'none'
     }}>
       <Col span={24}>
         <h1>Invest at the perfect time.</h1>
@@ -21,7 +22,8 @@ export default function TitleIntro({ }: Props) {
           fontWeight: 300,
           lineHeight: '1.5rem',
           marginBottom: '2rem',
-          width: '35rem'
+          width: '35rem',
+          pointerEvents: 'none'
         }}>
           By leveraging insights from our network of industry insiders,
           you’ll know exactly when to buy to maximize profit, and exactly when to sell to avoid painful losses.
