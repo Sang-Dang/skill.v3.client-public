@@ -38,7 +38,7 @@ export default function Example() {
         <div>
             <Header />
 
-            <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+            {/* <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
                 <img
                     src="/image/about/banner.png"
                     alt=""
@@ -94,7 +94,7 @@ export default function Example() {
                         </dl>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="bg-white py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
