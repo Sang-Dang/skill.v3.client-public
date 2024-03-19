@@ -139,30 +139,8 @@ export default function Example() {
                 </div>
             </div>
 
-            <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-24 lg:py-12">
+            {/* <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-24 lg:py-12">
                 <div className="mx-auto px-6 lg:px-8">
-
-                    {/* <div style={{ textAlign: 'center', lineHeight: '2rem' }}>
-                        <div
-                            style={{
-                                color: 'rgba(220, 220, 220, 0.82)',
-                                userSelect: 'none' as 'none',
-                            }}
-                        >
-                            Thông tin liên hệ:
-                            <br />
-                            Email: skillcetera@gmail.com
-                            <span style={{ color: 'white' }}></span>
-                            <br />
-                            Điện thoại: 0787 727 888 (Mr. Hảo)
-                            <br />
-                            0832 110 278 (Ms. Trang)
-                            <br />
-                            0825 497 013 (Liên hệ nhà tài trợ - Ms. Phương)
-                            <br />
-                            <a href="https://www.facebook.com/skillcetera">Skillcetera Fanpage</a>
-                        </div>
-                    </div> */}
 
                     <img
                         src="image/about/logos-sponsor.png"
@@ -183,7 +161,7 @@ export default function Example() {
                         }}
                     />
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )
