@@ -38,7 +38,7 @@ export default function Example() {
         <div>
             <Header />
 
-            {/* <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+            <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
                 <img
                     src="/image/about/banner.png"
                     alt=""
@@ -94,7 +94,7 @@ export default function Example() {
                         </dl>
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             <div className="bg-white py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -111,10 +111,10 @@ export default function Example() {
                 </div>
             </div>
 
-            {/* <TedxPic /> */}
-            {/* <ESCPic /> */}
+            <TedxPic />
+            <ESCPic />
 
-            {/* <div className="bg-white py-24 sm:py-32">
+            <div className="bg-white py-24 sm:py-32">
                 <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
                     <div className="max-w-2xl">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
@@ -137,9 +137,9 @@ export default function Example() {
                         ))}
                     </ul>
                 </div>
-            </div> */}
+            </div>
 
-            {/* <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-24 lg:py-12">
+            <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-24 lg:py-12">
                 <div className="mx-auto px-6 lg:px-8">
 
                     <img
@@ -161,7 +161,7 @@ export default function Example() {
                         }}
                     />
                 </div>
-            </div> */}
+            </div>
 
         </div>
     )
