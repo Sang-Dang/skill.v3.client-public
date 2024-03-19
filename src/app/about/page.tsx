@@ -35,10 +35,12 @@ const people = [
 
 export default function Example() {
     return (
-        <div>
+        <div style={{
+            overflowX: 'hidden'
+        }}>
             <Header />
 
-            <div className="w-full relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+            <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
                 <img
                     src="/image/about/banner.png"
                     alt="skillcetera"
