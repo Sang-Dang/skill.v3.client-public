@@ -38,12 +38,12 @@ export default function Example() {
         <div>
             <Header />
 
-            <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-                {/* <img
+            <div className="w-full relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+                <img
                     src="/image/about/banner.png"
                     alt="skillcetera"
                     className="absolute inset-0 -z-10 h-full w-full object-cover object-center md:object-center"
-                /> */}
+                />
                 <div
                     className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
                     aria-hidden="true"
