@@ -14,8 +14,11 @@
     "@heroicons/react": "^2.1.1",
     "@tanstack/react-query": "^5.20.1",
     "antd": "^5.13.2",
+    "firebase": "^10.10.0",
     "framer-motion": "^11.0.14",
+    "install": "^0.13.0",
     "next": "14.1.0",
+    "npm": "^10.5.0",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.70.0"
