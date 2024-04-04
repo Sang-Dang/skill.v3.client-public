@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: SSH and run commands
       uses: appleboy/ssh-action@master

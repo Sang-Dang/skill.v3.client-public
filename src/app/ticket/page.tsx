@@ -33,7 +33,7 @@ export default function Example() {
                           style={{
                             boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)'
                           }}
-                          src={`${domain}/file/image/${product.image}`}
+                          src={`${domain}/file/image/${product.images[0]}`}
                           alt={product.imageAlt}
                           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                         />
