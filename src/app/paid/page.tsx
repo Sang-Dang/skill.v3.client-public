@@ -22,7 +22,7 @@ export default function page({ }: Props) {
                             Go Home
                         </Button>
                     </Link>
-                    <Link href={'/shop'}>
+                    <Link href={'/ticket'}>
                         <Button key="buy" onClick={loading}>Buy Again</Button>
                     </Link>
                 </>

@@ -42,7 +42,7 @@ export default function Header({ }: Props) {
                                 <Link href='/event' style={{ color: 'black', fontSize: '1rem' }}>Event</Link>
                             </Col>
                             <Col>
-                                <Link href='/shop' style={{ color: 'black', fontSize: '1rem' }}>Shop</Link>
+                                <Link href='/ticket' style={{ color: 'black', fontSize: '1rem' }}>Ticket</Link>
                             </Col>
                             <Col>
                                 <Link href='/about' style={{ color: 'black', fontSize: '1rem' }}>About us</Link>

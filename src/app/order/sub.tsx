@@ -20,7 +20,7 @@ export default function Sub() {
             if (cart && cart.length > 0) {
                 setItems(JSON.parse(cart));
             } else {
-                redirect('/shop')
+                redirect('/ticket')
             }
         }
     }, [])
@@ -73,7 +73,7 @@ export default function Sub() {
                         message.loading('Order products invalid')
                         localStorage.removeItem('cart')
                         setTimeout(() => {
-                            window.location.href = '/shop'
+                            window.location.href = '/ticket'
                         }, 4000);
                     } else {
                         message.error('Order failed')
@@ -273,7 +273,7 @@ export default function Sub() {
                 </div>
                 {/* button action */}
                 <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <Link href="/shop">
+                    <Link href="/ticket">
                         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
                             Cancel
                         </button>

@@ -21,25 +21,28 @@ export default function Example() {
 
   useEffect(() => {
     var id = window.location.pathname.split('/')[3]
-    fetch(`${domain}/product/` + id)
+    fetch(`${domain}/ticket-user/` + id)
       .then((res) => res.json())
       .then((json) => {
+        console.log(json);
+        
         if (json.statusCode === 200) {
           setProduct({
             breadcrumbs: [
-              { id: 1, name: 'Shop', href: '/shop' },
+              { id: 1, name: 'Ticket', href: '/ticket' },
+              { id: 1, name: `${json.data[0].ticketName}`, href: `../../ticket/detail/${json.data[0].id}` },
             ],
-            ...json.data,
-            options: json.data.products.map((opt: any) => {
-              return {
-                product_name: json.data.name,
-                name: opt.name,
-                inStock: opt.quantity > 0,
-                price: opt.price,
-                id: opt.id,
-                image: json.data.images[0]
-              }
-            })
+            ...json.data[0],            
+            // options: json.data.map((opt: any) => {
+            //   return {
+            //     product_name: json.data.name,
+            //     name: opt.name,
+            //     inStock: opt.quantity > 0,
+            //     price: opt.price,
+            //     id: opt.id,
+            //     image: json.data.images[0]
+            //   }
+            // })
           })
         } else {
           window.location.href = '/404'
@@ -92,7 +95,7 @@ export default function Example() {
                 <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                   <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                     <img
-                      src={`${domain}/file/image/${product?.images[0]}`}
+                      src={`${domain}/file/image/${product?.image}`}
                       alt={product?.name}
                       className="h-full w-full object-cover object-center"
                     />
@@ -100,14 +103,14 @@ export default function Example() {
                   <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                     <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                       <img
-                        src={`${domain}/file/image/${product?.images[1]}`}
+                        src={`${domain}/file/image/${product?.image}`}
                         alt={product?.name}
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
                     <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                       <img
-                        src={`${domain}/file/image/${product?.images[2]}`}
+                        src={`${domain}/file/image/${product?.image}`}
                         alt={product?.name}
                         className="h-full w-full object-cover object-center"
                       />
@@ -115,7 +118,7 @@ export default function Example() {
                   </div>
                   <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
                     <img
-                      src={`${domain}/file/image/${product?.images[3]}`}
+                      src={`${domain}/file/image/${product?.image}`}
                       alt={product?.name}
                       className="h-full w-full object-cover object-center"
                     />
@@ -148,7 +151,7 @@ export default function Example() {
                       <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                         <RadioGroup.Label className="sr-only">Choose a option</RadioGroup.Label>
                         <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                          {product?.options.map((opt: any) => (
+                          {/* {product?.options.map((opt: any) => (
                             <RadioGroup.Option
                               key={opt.price}
                               value={opt}
@@ -193,7 +196,7 @@ export default function Example() {
                                 </>
                               )}
                             </RadioGroup.Option>
-                          ))}
+                          ))} */}
                         </div>
                       </RadioGroup>
                     </div>
