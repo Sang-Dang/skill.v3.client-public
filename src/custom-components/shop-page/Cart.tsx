@@ -1,42 +1,51 @@
-import { Fragment, use, useEffect, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ShoppingCartOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons'
-import { addToCart, getCart, reductFromCart, removeFromCart } from './CartAction'
-import { Badge, Input } from 'antd'
-import Link from 'next/link'
+'use client';
+
+/* eslint-disable @next/next/no-img-element */
+import { Fragment, use, useEffect, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { ShoppingCartOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { addToCart, getCart, reductFromCart, removeFromCart } from './CartAction';
+import { Badge, Input } from 'antd';
+import Link from 'next/link';
+import { domain } from '@/api';
 
 export default function Card({ onChange }: { onChange?: any }) {
-    const [open, setOpen] = useState(false)
-    const [products, setProducts] = useState<any[]>(getCart())
+    const [open, setOpen] = useState(false);
+    const [products, setProducts] = useState<any[]>(getCart());
 
     const updateCart = () => {
-        setProducts(getCart())
-    }
+        setProducts(getCart());
+    };
 
     useEffect(() => {
-        updateCart()
-    }, [onChange])
+        updateCart();
+    }, [onChange]);
 
     return (
         <>
-            <div style={{
-                position: 'fixed',
-                right: '20px',
-                bottom: '20px',
-            }}>
+            <div
+                style={{
+                    position: 'fixed',
+                    right: '20px',
+                    bottom: '20px',
+                }}
+            >
                 <Badge count={products.length} overflowCount={99}>
-                    <ShoppingCartOutlined onClick={() => {
-                        updateCart()
-                        setOpen(true)
-                    }} style={{
-                        backgroundColor: 'white',
-                        fontSize: '23px',
-                        alignItems: 'center',
-                        borderRadius: '50%',
-                        padding: '10px',
-                        boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
-                    }} />
+                    <ShoppingCartOutlined
+                        onClick={() => {
+                            updateCart();
+                            setOpen(true);
+                        }}
+                        style={{
+                            backgroundColor: 'white',
+                            fontSize: '23px',
+                            alignItems: 'center',
+                            borderRadius: '50%',
+                            padding: '10px',
+                            boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
+                        }}
+                    />
                 </Badge>
             </div>
             <Transition.Root show={open} as={Fragment}>
@@ -69,7 +78,9 @@ export default function Card({ onChange }: { onChange?: any }) {
                                         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                             <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                                 <div className="flex items-start justify-between">
-                                                    <Dialog.Title className="text-lg font-medium text-gray-900">Shopping cart</Dialog.Title>
+                                                    <Dialog.Title className="text-lg font-medium text-gray-900">
+                                                        Shopping cart
+                                                    </Dialog.Title>
                                                     <div className="ml-3 flex h-7 items-center">
                                                         <button
                                                             type="button"
@@ -88,37 +99,60 @@ export default function Card({ onChange }: { onChange?: any }) {
                                                         <ul role="list" className="-my-6 divide-y divide-gray-200">
                                                             {products.map((product) => (
                                                                 <li key={product.id} className="flex py-6">
-                                                                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                                        <img
-                                                                            src={`http://localhost:8080/file/image/${product.image}`}
-                                                                            alt={product.name}
-                                                                            className="h-full w-full object-cover object-center"
-                                                                        />
-                                                                    </div>
+                                                                    <Link
+                                                                        href={`/ticket/detail/${product.id}`}
+                                                                        onClick={() => setOpen(false)}
+                                                                    >
+                                                                        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                                                            <img
+                                                                                src={`${domain}/file/image/${product.images[0]}`}
+                                                                                alt={product.name}
+                                                                                className="h-full w-full object-cover object-center"
+                                                                            />
+                                                                        </div>
+                                                                    </Link>
 
                                                                     <div className="ml-4 flex flex-1 flex-col">
                                                                         <div>
                                                                             <div className="flex justify-between text-base font-medium text-gray-900">
-                                                                                <h3>
-                                                                                    <a href={product.href}>{product.name}</a>
+                                                                                <h3
+                                                                                    className="w-72 truncate"
+                                                                                    title={product.ticketName}
+                                                                                >
+                                                                                    {product.ticketName}
                                                                                 </h3>
-                                                                                <p className="ml-4">{product.price.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VND'}</p>
                                                                             </div>
-                                                                            <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                                                                            <p>{product.price.toLocaleString()} VND</p>
                                                                         </div>
                                                                         <div className="flex flex-1 items-end justify-between text-sm">
                                                                             <Input
                                                                                 className="text-gray-500"
-                                                                                addonBefore={<button onClick={() => {
-                                                                                    reductFromCart(product.id)
-                                                                                    updateCart()
-                                                                                }}><MinusOutlined /></button>}
-                                                                                addonAfter={<button onClick={() => {
-                                                                                    addToCart(product)
-                                                                                    updateCart()
-                                                                                }}><PlusOutlined /></button>}
+                                                                                addonBefore={
+                                                                                    <button
+                                                                                        onClick={() => {
+                                                                                            reductFromCart(product.id);
+                                                                                            updateCart();
+                                                                                        }}
+                                                                                    >
+                                                                                        <MinusOutlined />
+                                                                                    </button>
+                                                                                }
+                                                                                addonAfter={
+                                                                                    <button
+                                                                                        onClick={() => {
+                                                                                            addToCart(product);
+                                                                                            updateCart();
+                                                                                        }}
+                                                                                    >
+                                                                                        <PlusOutlined />
+                                                                                    </button>
+                                                                                }
                                                                                 value={product.quantity}
-                                                                                style={{ width: '115px', textAlign: 'center', userSelect: 'none' }}
+                                                                                style={{
+                                                                                    width: '115px',
+                                                                                    textAlign: 'center',
+                                                                                    userSelect: 'none',
+                                                                                }}
                                                                             />
 
                                                                             <div className="flex">
@@ -126,8 +160,8 @@ export default function Card({ onChange }: { onChange?: any }) {
                                                                                     type="button"
                                                                                     className="font-medium text-indigo-600 hover:text-indigo-500"
                                                                                     onClick={() => {
-                                                                                        removeFromCart(product.id)
-                                                                                        updateCart()
+                                                                                        removeFromCart(product.id);
+                                                                                        updateCart();
                                                                                     }}
                                                                                 >
                                                                                     Remove
@@ -146,11 +180,12 @@ export default function Card({ onChange }: { onChange?: any }) {
                                                 <div className="flex justify-between text-base font-medium text-gray-900">
                                                     <p>Subtotal</p>
                                                     <p>
-                                                        {
-                                                            products.reduce((acc, product) => {
-                                                                return acc + product.price * product.quantity
-                                                            }, 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VND'
-                                                        }
+                                                        {products
+                                                            .reduce((acc, product) => {
+                                                                return acc + product.price * product.quantity;
+                                                            }, 0)
+                                                            .toLocaleString()}{' '}
+                                                        VND
                                                     </p>
                                                 </div>
                                                 {/* <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p> */}
@@ -163,17 +198,17 @@ export default function Card({ onChange }: { onChange?: any }) {
                                                     </Link>
                                                 </div>
                                                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                                                    <p>
-                                                        or{' '}
-                                                        <button
-                                                            type="button"
-                                                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                                                            onClick={() => {setOpen(false)}}
-                                                        >
-                                                            Continue Shopping
-                                                            <span aria-hidden="true"> &rarr;</span>
-                                                        </button>
-                                                    </p>
+                                                    or{' '}
+                                                    <button
+                                                        type="button"
+                                                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                        onClick={() => {
+                                                            setOpen(false);
+                                                        }}
+                                                    >
+                                                        Continue Shopping
+                                                        <span aria-hidden="true"> &rarr;</span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,5 +220,5 @@ export default function Card({ onChange }: { onChange?: any }) {
                 </Dialog>
             </Transition.Root>
         </>
-    )
+    );
 }
