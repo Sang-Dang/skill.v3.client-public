@@ -3,16 +3,17 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: "https",
-                hostname: "skira.caucalamdev.io.vn",
+                protocol: 'https',
+                hostname: 'skira.caucalamdev.io.vn',
             },
             {
                 // DEV ONLY
-                protocol: "https",
-                hostname: "tailwindui.com",
+                protocol: 'https',
+                hostname: 'tailwindui.com',
             },
         ],
     },
-}
+    reactStrictMode: false,
+};
 
 export default nextConfig;

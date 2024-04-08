@@ -1,26 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { domain } from '@/api';
+import { getCart } from '@/custom-components/shop-page/CartAction';
 import { App, Form, Row } from 'antd';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
+
+type FieldType = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+    phone: string;
+};
 
 export default function Sub() {
-    const [form] = Form.useForm();
-    const [items, setItems] = React.useState([]);
+    const [form] = Form.useForm<FieldType>();
+    const [items, setItems] = React.useState<any[]>([]);
     const [isDisabled, setIsDisabled] = React.useState(false);
     const { message } = App.useApp();
 
-    React.useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const cart = localStorage.getItem('cart');
-            if (cart && cart.length > 0) {
-                setItems(JSON.parse(cart));
-            } else {
-                redirect('/ticket');
-            }
+    useEffect(() => {
+        const cartItems = getCart();
+
+        if (cartItems.length === 0) {
+            redirect('/');
         }
+
+        setItems(cartItems);
     }, []);
 
     async function onFinish() {
@@ -121,16 +129,21 @@ export default function Sub() {
 
     return (
         <Row style={{ padding: '2rem 1rem' }} justify={'center'}>
-            <Form name="basic" form={form}>
+            <Form<FieldType>
+                name="submit-order-form"
+                form={form}
+                onFinishFailed={() => message.error('Please fill in the required fields.')}
+            >
                 {/* items vs notice */}
                 <div className="space-y-12">
                     {/* info user */}
                     <div className="border-b border-gray-900/10 pb-12">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-                        <p className="mt-1 text-sm leading-6 text-gray-600">
-                            Provide a Permanent Email Address for Order Confirmation
-                        </p>
-
+                        <header>
+                            <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+                            <p className="mt-1 text-sm leading-6 text-gray-600">
+                                Provide a Permanent Email Address for Order Confirmation
+                            </p>
+                        </header>
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
                                 <label
@@ -140,17 +153,19 @@ export default function Sub() {
                                     First name
                                 </label>
                                 <div className="mt-2">
-                                    <input
-                                        onChange={(e) => {
-                                            form.setFieldsValue({ firstName: e.target.value });
-                                        }}
-                                        type="text"
-                                        name="first-name"
-                                        id="first-name"
-                                        autoComplete="given-name"
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        style={{ paddingLeft: '0.5rem' }}
-                                    />
+                                    <Form.Item<FieldType>
+                                        name="firstName"
+                                        rules={[{ required: true, message: 'First Name is required' }]}
+                                    >
+                                        <input
+                                            type="text"
+                                            name="first-name"
+                                            id="first-name"
+                                            autoComplete="given-name"
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            style={{ paddingLeft: '0.5rem' }}
+                                        />
+                                    </Form.Item>
                                 </div>
                             </div>
 

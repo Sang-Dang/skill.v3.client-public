@@ -75,3 +75,9 @@ export function getCart(): any[] {
     }
     return [];
 }
+
+export function clearCart() {
+    if (typeof window !== 'undefined') {
+        localStorage.removeItem('cart');
+    }
+}
