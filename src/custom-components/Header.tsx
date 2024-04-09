@@ -6,7 +6,7 @@ import { Dialog, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import logo from '/public/logo.svg';
 
 const navigation = [
@@ -21,6 +21,11 @@ function classNames(...classes: any[]) {
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+
+    useEffect(() => {
+        setShowMenu(AuthHandler.isLoggedIn());
+    }, []);
 
     return (
         <header className="bg-white">
@@ -63,7 +68,7 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {AuthHandler.isLoggedIn() ? (
+                    {showMenu ? (
                         <Menu as="div" className="relative inline-block text-left" key="loggedIn-desktop">
                             <div>
                                 <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -92,7 +97,7 @@ export default function Header() {
                                         <Menu.Item>
                                             {({ active }) => (
                                                 <Link
-                                                    href="/history"
+                                                    href="/order/history"
                                                     className={classNames(
                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                         'block px-4 py-2 text-sm',
@@ -123,9 +128,16 @@ export default function Header() {
                             </Transition>
                         </Menu>
                     ) : (
-                        <Link href="/login" type="button" className="text-sm font-semibold leading-6 text-gray-900" key="notLoggedIn-desktop">
-                            Log in <span aria-hidden="true">&rarr;</span>
-                        </Link>
+                        <div>
+                            <Link
+                                href="/login"
+                                type="button"
+                                className="text-sm font-semibold leading-6 text-gray-900"
+                                key="notLoggedIn-desktop"
+                            >
+                                Log in <span aria-hidden="true">&rarr;</span>
+                            </Link>
+                        </div>
                     )}
                 </div>
             </nav>
@@ -164,10 +176,10 @@ export default function Header() {
                                 ))}
                             </div>
                             <div className="py-6">
-                                {AuthHandler.isLoggedIn() ? (
+                                {showMenu ? (
                                     <div key="loggedIn">
                                         <Link
-                                            href="/history"
+                                            href="/order/history"
                                             className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
                                             Order History
@@ -198,80 +210,3 @@ export default function Header() {
         </header>
     );
 }
-
-// export default function Header() {
-//     return (
-//         <Row
-//             style={{
-//                 padding: '1rem',
-//                 height: 'fit-content',
-//                 width: '100vw',
-//                 userSelect: 'none',
-//             }}
-//             justify={'center'}
-//             align="middle"
-//         >
-//             <Col sm={{ span: 24 }} lg={{ span: 18 }}>
-//                 <Row align="middle" gutter={[20, 20]}>
-//                     <Col sm={{ span: 24 }} lg={{ span: 6 }}>
-//                         <Link href={'/'}>
-//                             <Image
-//                                 src={logo}
-//                                 alt="skillcetera logo"
-//                                 width={200}
-//                                 height={200}
-//                                 style={{
-//                                     height: '3rem',
-//                                     objectFit: 'cover',
-//                                     userSelect: 'none',
-//                                 }}
-//                             />
-//                         </Link>
-//                     </Col>
-//                     <Col sm={{ span: 24 }} lg={{ span: 18 }}>
-//                         <Row gutter={[20, 20]} align="middle">
-//                             <Col>
-//                                 <Link href="/event" style={{ color: 'black', fontSize: '1rem' }}>
-//                                     Event
-//                                 </Link>
-//                             </Col>
-//                             <Col>
-//                                 <Link href="/ticket" style={{ color: 'black', fontSize: '1rem' }}>
-//                                     Ticket
-//                                 </Link>
-//                             </Col>
-//                             <Col>
-//                                 <Link href="/about" style={{ color: 'black', fontSize: '1rem' }}>
-//                                     About us
-//                                 </Link>
-//                             </Col>
-//                             <Col className="lg:hidden">
-//                                 <LoginHeaderButton />
-//                             </Col>
-//                         </Row>
-//                     </Col>
-//                 </Row>
-//             </Col>
-//             <Col sm={{ span: 0 }} lg={{ span: 4 }}>
-//                 <Row gutter={[10, 10]} align="middle" justify={'end'}>
-//                     <Col className="hidden lg:block">
-//                         <a target="blank" href="https://www.facebook.com/skillcetera">
-//                             <FacebookOutlined style={{ fontSize: '26px', color: '#08c', alignItems: 'center' }} />
-//                         </a>
-//                     </Col>
-//                     <Col className="hidden lg:block">
-//                         <a target="blank" href="https://www.instagram.com/skillcetera">
-//                             <InstagramOutlined style={{ fontSize: '26px', color: '#E4405F', alignItems: 'center' }} />
-//                         </a>
-//                     </Col>
-//                     <Col style={{ userSelect: 'none' }} className="hidden lg:block">
-//                         |
-//                     </Col>
-//                     <Col className="hidden lg:block">
-//                         <LoginHeaderButton />
-//                     </Col>
-//                 </Row>
-//             </Col>
-//         </Row>
-//     );
-// }

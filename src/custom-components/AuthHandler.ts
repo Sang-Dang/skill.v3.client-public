@@ -110,6 +110,10 @@ export class AuthHandler {
 
         return payload as Principal;
     }
+
+    static getToken() {
+        return Cookies.get('token');
+    }
 }
 
 type Principal = {
