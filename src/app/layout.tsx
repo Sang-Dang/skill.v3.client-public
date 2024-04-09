@@ -15,9 +15,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="h-full">
-            <head>
-                <link rel="icon" type="images/x-icon" href="http://localhost:3000/favicon.ico" />
-            </head>
             <body className="h-full">
                 <AntdRegistry>
                     <App className="h-full w-full">{children}</App>
