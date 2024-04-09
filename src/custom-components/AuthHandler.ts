@@ -45,6 +45,11 @@ export class AuthHandler {
                 return false;
             }
 
+            const claims = jwtDecode(token.data) as any;
+            if (claims.role !== 'user') {
+                return false;
+            }
+
             await AuthHandler.login(token.data);
 
             return this.isLoggedIn();
@@ -70,7 +75,14 @@ export class AuthHandler {
             }).then((res) => res.json());
 
             if (token.statusCode === 200) {
+
+                const claims = jwtDecode(token.data) as any;
+                if (claims.role !== 'user') {
+                    return false;
+                }
+
                 await AuthHandler.login(token.data);
+
                 return this.isLoggedIn();
             } else {
                 return false;
