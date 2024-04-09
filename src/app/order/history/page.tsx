@@ -5,6 +5,7 @@ import { domain } from '@/api';
 import { AuthHandler } from '@/custom-components/AuthHandler';
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { Card, Modal, QRCode } from 'antd';
+import { randomUUID } from 'crypto';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -199,7 +200,11 @@ export default function Example() {
             >
                 <Card className="w-full">This is your ticket, please show this to the staff to check-in</Card>
                 <QRCode
-                    value={`${domain}/ticket-order-user/get-ticket/${currentOrderTicket?.idOrder}/${currentOrderTicket?.idItem}`}
+                    value={JSON.stringify({
+                        idOrder: currentOrderTicket?.idOrder,
+                        idItem: currentOrderTicket?.idItem,
+                        id: Math.random().toString(8) + '_' + Date.now(),
+                    })}
                     type="svg"
                     errorLevel="L"
                     size={300}
