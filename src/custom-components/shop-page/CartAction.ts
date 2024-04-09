@@ -4,9 +4,10 @@ export function addToCart(product: any) {
         if (product.id !== undefined) {
             let cart = JSON.parse(localStorage.getItem('cart') || '[]');
             if (cart) {
+                const currentTotal = cart.reduce((acc: number, item: any) => acc + item.quantity, 0);
                 const index = cart.findIndex((item: any) => item.id === product.id);
                 if (index !== -1) {
-                    if (cart[index].quantity < 5) {
+                    if (currentTotal < 5) {
                         cart[index].quantity += 1;
                     } else {
                         alert('You can only add up to 5 products');

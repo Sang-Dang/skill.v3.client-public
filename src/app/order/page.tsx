@@ -32,6 +32,7 @@ export default function OrderPage() {
     useEffect(() => {
         const store = getCart();
         setItems(store);
+        if (store.length === 0) redirect('/');
         fetch(`${domain}/ticket-voucher-user/get-available-vouchers`, {
             method: 'POST',
             headers: {

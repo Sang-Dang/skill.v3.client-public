@@ -21,6 +21,12 @@ export default function LoginForm() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if (search.get('redirect')) {
+            message.info('Please login to continue');
+        }
+    }, [message, search]);
+
     async function handleLoginBasic(values: FieldType) {
         setLoading(true);
         try {
@@ -34,6 +40,7 @@ export default function LoginForm() {
         } catch (error) {
             console.error(error);
             message.error('Login failed');
+            form.resetFields();
         } finally {
             setLoading(false);
         }
@@ -52,6 +59,7 @@ export default function LoginForm() {
         } catch (error) {
             console.error(error);
             message.error('Login failed');
+            form.resetFields();
         } finally {
             setLoading(false);
         }
