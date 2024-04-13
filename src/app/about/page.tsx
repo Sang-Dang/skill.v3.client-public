@@ -2,42 +2,40 @@ import Header from '@/custom-components/Header'
 import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
 import TedxPic from '../../custom-components/about-page/tedxpic'
 import ESCPic from '../../custom-components/about-page/escpic'
+import Footer from '@/custom-components/Footer';
 
-const links = [
-    { name: 'Meet our leadership', href: '#' },
-]
+const links = [{ name: 'Meet our leadership', href: '#' }];
 const stats = [
     { id: 1, name: 'Transactions every 24 hours', value: '44 million' },
     { id: 2, name: 'Assets under holding', value: '$119 trillion' },
     { id: 3, name: 'New users annually', value: '46,000' },
-]
+];
 const people = [
     {
         name: 'Tran Nguyen Phuoc',
         role: 'Mentor / CEO',
-        imageUrl:
-            '/image/about/mentor.jpeg',
+        imageUrl: '/image/about/mentor.jpeg',
     },
     {
         name: 'Dang Ngoc Hao',
         role: 'President',
-        imageUrl:
-            '/image/about/president.jpeg',
+        imageUrl: '/image/about/president.jpeg',
     },
     {
         name: 'Nguyen Thi Diem Phuong',
         role: 'Vice President',
-        imageUrl:
-            '/image/about/vicepresident.jpg',
+        imageUrl: '/image/about/vicepresident.jpg',
     },
     // More people...
-]
+];
 
 export default function Example() {
     return (
-        <div style={{
-            overflowX: 'hidden'
-        }}>
+        <div
+            style={{
+                overflowX: 'hidden',
+            }}
+        >
             <Header />
 
             <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
@@ -74,8 +72,8 @@ export default function Example() {
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Work with us</h2>
                         <p className="mt-6 text-lg leading-8 text-gray-300">
-                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                            fugiat veniam occaecat fugiat aliqua.
+                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                            Elit sunt amet fugiat veniam occaecat fugiat aliqua.
                         </p>
                     </div>
                     <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
@@ -86,11 +84,13 @@ export default function Example() {
                                 </a>
                             ))}
                         </div>
-                        <dl className="hidden lg:flex mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+                        <dl className="mt-16 grid hidden grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:flex lg:grid-cols-4">
                             {stats.map((stat) => (
                                 <div key={stat.name} className="flex flex-col-reverse">
                                     <dt className="text-base leading-7 text-gray-300">{stat.name}</dt>
-                                    <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
+                                    <dd className="text-2xl font-bold leading-9 tracking-tight text-white">
+                                        {stat.value}
+                                    </dd>
                                 </div>
                             ))}
                         </dl>
@@ -119,10 +119,12 @@ export default function Example() {
             <div className="bg-white py-24 sm:py-32">
                 <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
                     <div className="max-w-2xl">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
+                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            Meet our leadership
+                        </h2>
                         <p className="mt-6 text-lg leading-8 text-gray-600">
-                            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
-                            suspendisse.
+                            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae
+                            ullamcorper suspendisse.
                         </p>
                     </div>
                     <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
@@ -131,7 +133,9 @@ export default function Example() {
                                 <div className="flex items-center gap-x-6">
                                     <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
                                     <div>
-                                        <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
+                                        <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                                            {person.name}
+                                        </h3>
                                         <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
                                     </div>
                                 </div>
@@ -143,7 +147,6 @@ export default function Example() {
 
             <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-24 lg:py-12">
                 <div className="mx-auto px-6 lg:px-8">
-
                     <img
                         src="image/about/logos-sponsor.png"
                         alt="sponsor"
@@ -152,7 +155,6 @@ export default function Example() {
                             pointerEvents: 'none',
                         }}
                     />
-
                 </div>
                 <div className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
                     <div
@@ -165,6 +167,7 @@ export default function Example() {
                 </div>
             </div>
 
+            <Footer />
         </div>
-    )
+    );
 }

@@ -1,5 +1,3 @@
-import { ComponentType, SVGProps } from 'react';
-
 const navigation = {
     main: [
         { name: 'About', href: '#' },
