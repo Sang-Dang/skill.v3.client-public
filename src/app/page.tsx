@@ -5,9 +5,9 @@ import TitleIntro from "@/custom-components/home-page/TitleIntro";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Header />
-      <TitleIntro />
-    </main>
+      <main className={styles.main}>
+          <Header />
+          <TitleIntro />
+      </main>
   );
 }
