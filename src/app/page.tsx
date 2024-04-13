@@ -1,13 +1,15 @@
-import styles from "./page.module.css";
-import Link from "next/link";
-import Header from "@/custom-components/Header";
-import TitleIntro from "@/custom-components/home-page/TitleIntro";
+import Tedx2024 from '@/custom-components/event-page/tedx2024/Tedx2024';
+import Header from '@/custom-components/Header';
 
 export default function Home() {
-  return (
-      <main className={styles.main}>
-          <Header />
-          <TitleIntro />
-      </main>
-  );
+    return (
+        <div
+            style={{
+                overflowX: 'hidden',
+            }}
+        >
+            <Header />
+            <Tedx2024 />
+        </div>
+    );
 }

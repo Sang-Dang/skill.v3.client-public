@@ -11,7 +11,6 @@ import logo from '/public/logo.svg';
 
 const navigation = [
     { name: 'About us', href: '/about' },
-    { name: 'Event', href: '/event' },
     { name: 'Tickets', href: '/ticket' },
 ];
 

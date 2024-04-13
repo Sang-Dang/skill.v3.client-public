@@ -1,36 +1,21 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
-export default function Intro({ }: Props) {
+export default function Intro({}: Props) {
     return (
-        <div className="relative overflow-hidden bg-white" id='intro'>
+        <div className="relative overflow-hidden bg-white" id="intro">
             <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div className="sm:max-w-lg">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                            TEDxFPTUniversityHCMC
-                        </h1>
-                        <p className="mt-4 text-l text-gray-500">
-                            TEDxFPTUniversityHCMC is a program authorized by the global non-profit organization TED,
-                            and this project is managed by Skillcetera - English and Skills Club at FPT University Ho Chi Minh City.
-                        </p>
-                        <p className="mt-4 text-l text-gray-500">
-                            TEDxFPTUniversityHCMC is a program authorized by the global non-profit organization TED,
-                            and this project is managed by Skillcetera - English and Skills Club at FPT University Ho Chi Minh City.
-                        </p>
-                        <p className="mt-4 text-l text-gray-500">
-                            TEDxFPTUniversityHCMC is a program authorized by the global non-profit organization TED,
-                            and this project is managed by Skillcetera - English and Skills Club at FPT University Ho Chi Minh City.
-                        </p>
-                        <p className="mt-4 text-l text-gray-500">
-                            TEDxFPTUniversityHCMC is a program authorized by the global non-profit organization TED,
-                            and this project is managed by Skillcetera - English and Skills Club at FPT University Ho Chi Minh City.
-                        </p>
-                        <p className="mt-4 text-l text-gray-500">
-                            TEDxFPTUniversityHCMC is a program authorized by the global non-profit organization TED,
-                            and this project is managed by Skillcetera - English and Skills Club at FPT University Ho Chi Minh City.
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Our theme</h1>
+                        <p className="text-l mt-4 text-gray-500">
+                            &quot;Start Small&quot; means that perfect is not a must. Although the gap between our
+                            current position and our objective seems vast and immeasurable, a single, modest action can
+                            bring us one step closer to achieving our goal. Let us lay down the first brick, solve the
+                            first puzzle, and expect infinite possibilities. Building upon this existing foundation, we
+                            will uncover something far more fascinating and significant.
                         </p>
                     </div>
                     <div>
@@ -105,12 +90,12 @@ export default function Intro({ }: Props) {
                                 href={'/ticket'}
                                 className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
                             >
-                                Buy Ticket
+                                Get Tickets
                             </Link>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }

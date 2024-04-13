@@ -11,6 +11,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'tailwindui.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'scontent.fsgn2-10.fna.fbcdn.net',
+            },
         ],
     },
     reactStrictMode: false,

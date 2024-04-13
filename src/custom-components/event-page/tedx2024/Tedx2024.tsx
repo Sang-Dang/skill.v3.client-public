@@ -9,12 +9,12 @@ type Props = {}
 
 export default function Tedx2024({ }: Props) {
   return (
-    <>
-      <Banner />
-      <Intro />
-      <TicketInfo />
-      <Organizer />
-      <Sponsor />
-    </ >
-  )
+      <>
+          <Banner />
+          <Intro />
+          <TicketInfo />
+          <Organizer />
+          {/* <Sponsor /> */}
+      </>
+  );
 }

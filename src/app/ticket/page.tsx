@@ -19,7 +19,7 @@ export default async function Example() {
                 <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
                     <div className="absolute inset-0 overflow-hidden">
                         <Image
-                            src="https://tailwindui.com/img/ecommerce-images/home-page-03-feature-section-full-width.jpg"
+                            src="https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/342031055_197169383109109_4384167485037987822_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHCIDlUeF9Jp3DvqFOKBxqjM9rD6UVLKoYz2sPpRUsqhgM3c3KIKHx5PURhD3ogIkbX8-NJ2C0mZ2Y7x3JQh7Ak&_nc_ohc=saSQgY-_JjEAb70iUzV&_nc_ht=scontent.fsgn2-10.fna&oh=00_AfCvB83uANBy4uGo4lZtZP1qP6QHiKMFsVpfzadKe5Xuew&oe=662075EB"
                             alt="banner"
                             layout="fill"
                             className="h-full w-full object-cover object-center"
@@ -31,14 +31,11 @@ export default async function Example() {
                             TEDxFPTUniversityHCMC 2024
                         </h2>
                         <p className="mt-3 text-xl text-white">
-                            We&aposre committed to creating a more sustainable future.
+                            TEDxFPTUniversity HCMC is an annual event organized by the Skills and Languages Club -
+                            Skillcetera under FPT University for the past four years. Every season we are honored to
+                            invite inspiring guests to share their knowledge, perspectives and experiences with the
+                            audience.
                         </p>
-                        <a
-                            href="#"
-                            className="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-                        >
-                            Read our story
-                        </a>
                     </div>
                 </div>
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
