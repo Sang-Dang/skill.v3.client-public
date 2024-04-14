@@ -1,3 +1,6 @@
+import { cn } from '@/common/util/cn';
+import { HTMLAttributes } from 'react';
+
 const navigation = {
     main: [
         { name: 'About', href: '#' },
@@ -72,9 +75,11 @@ const navigation = {
     ],
 };
 
-export default function Footer() {
+type Props = HTMLAttributes<HTMLDivElement>;
+
+export default function Footer(props: Props) {
     return (
-        <footer className="bg-black/80">
+        <footer className={cn('bg-black/80', props.className)}>
             <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
                 <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
                     {navigation.main.map((item) => (

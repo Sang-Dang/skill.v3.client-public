@@ -1,8 +1,8 @@
 import { domain } from '@/api';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { auth } from '@/app/ticket/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '@/firebase';
 
 export class AuthHandler {
     static async register(req: { username: string; phone: string; email: string; password: string }) {

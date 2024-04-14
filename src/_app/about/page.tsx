@@ -1,8 +1,8 @@
-import Header from '@/custom-components/Header'
-import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
-import TedxPic from '../../custom-components/about-page/tedxpic'
-import ESCPic from '../../custom-components/about-page/escpic'
-import Footer from '@/custom-components/Footer';
+import Header from '@/app/(homepage)/components/Header';
+import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline';
+import TedxPic from '../../custom-components/about-page/tedxpic';
+import ESCPic from '../../custom-components/about-page/escpic';
+import Footer from '@/common/components/Footer';
 
 const links = [{ name: 'Meet our leadership', href: '#' }];
 const stats = [

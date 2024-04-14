@@ -1,5 +1,5 @@
-import Footer from '@/custom-components/Footer';
-import Header from '@/custom-components/Header';
+import Footer from '@/common/components/Footer';
+import Header from '@/app/(homepage)/components/Header';
 import React, { ReactNode, Suspense } from 'react';
 
 export default function layout({ children }: { children: ReactNode }) {
