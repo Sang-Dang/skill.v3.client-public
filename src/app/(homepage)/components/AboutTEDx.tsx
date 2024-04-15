@@ -1,5 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import aboutTedx1 from '@/app/(homepage)/images/about-tedx-1.jpg';
+import { motion } from 'framer-motion';
+
+const MotionImage = motion(Image);
 
 export default function AboutTEDx() {
     return (
@@ -39,10 +44,16 @@ export default function AboutTEDx() {
             </div>
             <div className="relative overflow-hidden pt-16 lg:pt-20">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <Image
+                    <MotionImage
                         className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
                         src={aboutTedx1}
                         alt=""
+                        initial={{ opacity: 0, y: 100 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                        viewport={{
+                            once: true,
+                        }}
                     />
                     <div className="relative" aria-hidden="true">
                         <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]" />

@@ -1,9 +1,15 @@
+'use client';
+
 import themeImage1 from '@/app/(homepage)/images/home-theme-1.jpg';
 import themeImage2 from '@/app/(homepage)/images/home-theme-2.jpg';
 import themeImage3 from '@/app/(homepage)/images/home-theme-3.jpg';
 import themeImage4 from '@/app/(homepage)/images/home-theme-4.jpg';
+import { Button } from '@nextui-org/react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+
+const MotionImage = motion(Image);
 
 export default function AboutTheme() {
     return (
@@ -24,42 +30,65 @@ export default function AboutTheme() {
                             something far more fascinating and significant.
                         </p>
                         <div className="mt-10 flex">
-                            <Link
-                                href="/tickets"
-                                className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-                            >
-                                Get your tickets <span aria-hidden="true">&rarr;</span>
+                            <Link href="/tickets">
+                                <Button color="primary" className="px-3.5 py-2.5 text-sm font-semibold">
+                                    Get your tickets <span aria-hidden="true">&rarr;</span>
+                                </Button>
                             </Link>
                         </div>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
                         <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
-                            <Image
+                            <MotionImage
                                 src={themeImage2}
                                 alt=""
                                 className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                                initial={{ opacity: 0, y: -100 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{
+                                    once: true,
+                                }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
                             />
                         </div>
                         <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                             <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
-                                <Image
+                                <MotionImage
                                     src={themeImage3}
                                     alt=""
                                     className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+                                    initial={{ opacity: 0, y: 100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{
+                                        once: true,
+                                    }}
+                                    transition={{ duration: 0.5, delay: 0 }}
                                 />
                             </div>
                             <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
-                                <Image
+                                <MotionImage
                                     src={themeImage1}
                                     alt=""
                                     className="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+                                    initial={{ opacity: 0, y: 100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{
+                                        once: true,
+                                    }}
+                                    transition={{ duration: 0.5, delay: 0.4 }}
                                 />
                             </div>
                             <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
-                                <Image
+                                <MotionImage
                                     src={themeImage4}
                                     alt=""
                                     className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                                    initial={{ opacity: 0, y: 100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{
+                                        once: true,
+                                    }}
+                                    transition={{ duration: 0.5, delay: 0.5 }}
                                 />
                             </div>
                         </div>

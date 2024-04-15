@@ -5,6 +5,8 @@ import HomeHeader from '@/app/(homepage)/components/HomeHeader';
 import Sponsors from '@/app/(homepage)/components/Sponsors';
 import mainBanner from '@/app/(homepage)/images/main-banner.jpg';
 import Footer from '@/common/components/Footer';
+import ParallaxText from '@/common/components/ParallaxText';
+import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -52,11 +54,14 @@ export default function RootPage() {
                                     - Skillcetera under FPT University for the past four years.
                                 </p>
                                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                                    <Link
-                                        href="/tickets"
-                                        className="rounded-md bg-primary-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400"
-                                    >
-                                        Get tickets
+                                    <Link href="/tickets">
+                                        <Button
+                                            type="button"
+                                            color="primary"
+                                            className="px-3.5 py-2.5 text-sm font-semibold"
+                                        >
+                                            Get tickets
+                                        </Button>
                                     </Link>
                                     <a href="#" className="text-sm font-semibold leading-6 text-white">
                                         Learn more <span aria-hidden="true">→</span>
@@ -81,6 +86,10 @@ export default function RootPage() {
                 <AboutTheme />
                 <AboutTEDx />
                 <CallToAction />
+                <div>
+                    <ParallaxText baseVelocity={-5}>TEDx FPT University HCMC</ParallaxText>
+                    <ParallaxText baseVelocity={5}>Consistency is Flexibility </ParallaxText>
+                </div>
                 <Sponsors />
             </div>
             <Footer className="mt-32" />

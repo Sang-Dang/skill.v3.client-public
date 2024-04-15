@@ -1,106 +1,205 @@
 'use client';
 
-/* eslint-disable @next/next/no-img-element */
-import { AuthHandler } from '@/custom-components/AuthHandler';
+import logo from '@/assets/logo.svg';
+import ProfileDropdown from '@/common/components/ProfileDropdown';
+import Auth from '@/common/context/AuthContext';
+import Cart from '@/common/context/CartContext';
+import LoginModal from '@/common/modals/LoginModal';
+import { cn } from '@/common/util/cn';
 import { Dialog } from '@headlessui/react';
+import { ShoppingCartIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
+import { Avatar, AvatarIcon, Badge, Button, Skeleton } from '@nextui-org/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ForwardedRef, forwardRef, Ref, useEffect, useState } from 'react';
 
 const navigation = [
     { name: 'About us', href: '/about' },
-    { name: 'Tickets', href: '/ticket' },
+    { name: 'Tickets', href: '/tickets' },
 ];
 
-export default function Header() {
+type Props = {
+    headerBackground?: 'transparent' | 'dark' | 'light';
+    textColor?: 'dark' | 'light';
+};
+
+const Header = forwardRef(function HeaderComponent(
+    { textColor = 'dark', headerBackground = 'light' }: Props,
+    ref?: ForwardedRef<HTMLDivElement>,
+) {
+    const cart = Cart.useCart();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [showMenu, setShowMenu] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<undefined | boolean>(undefined);
+    const auth = Auth.useAuth();
 
     useEffect(() => {
-        setShowMenu(AuthHandler.isLoggedIn());
-    }, []);
+        setIsLoggedIn(auth.isLoggedIn());
+    }, [auth]);
 
     return (
-        <header className="fixed inset-x-0 top-0 z-50">
-            <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Skillcetera</span>
-                        <img
-                            className="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                            alt=""
-                        />
-                    </a>
-                </div>
-                <div className="flex lg:hidden">
-                    <button
-                        type="button"
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-                        onClick={() => setMobileMenuOpen(true)}
+        <>
+            <LoginModal>
+                {(onOpen) => (
+                    <header
+                        ref={ref}
+                        className={cn(
+                            'fixed inset-x-0 top-0 z-50 text-black transition-all',
+                            headerBackground === 'dark' && 'bg-black',
+                            headerBackground === 'light' && 'bg-white shadow-lg',
+                            headerBackground === 'transparent' && 'bg-transparent',
+                        )}
+                        style={{}}
                     >
-                        <span className="sr-only">Open main menu</span>
-                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                </div>
-                <div className="hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-white">
-                        Log in <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </div>
-            </nav>
-            <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-                <div className="fixed inset-0 z-50" />
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-                    <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
-                            <img
-                                className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                alt=""
-                            />
-                        </a>
-                        <button
-                            type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-400"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
-                    </div>
-                    <div className="mt-6 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/25">
-                            <div className="space-y-2 py-6">
+                        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                            <div className="flex lg:flex-1">
+                                <Link href="/" className="-m-1.5 p-1.5">
+                                    <span className="sr-only">Skillcetera</span>
+                                    <Image
+                                        className={cn(
+                                            'h-12 w-24 scale-[200%] ',
+                                            textColor === 'light' && 'transform invert filter',
+                                        )}
+                                        src={logo}
+                                        alt=""
+                                    />
+                                </Link>
+                            </div>
+                            <div className="flex gap-4 lg:hidden">
+                                <Badge content="5" size="sm" color="primary">
+                                    <Button
+                                        isIconOnly
+                                        variant={'light'}
+                                        className="p-[10px]"
+                                        type="button"
+                                        onClick={cart.openCart}
+                                    >
+                                        <ShoppingCartIcon
+                                            className={cn(
+                                                textColor === 'light' && 'text-white',
+                                                textColor === 'dark' && 'text-black',
+                                            )}
+                                        />
+                                    </Button>
+                                </Badge>
+                                <button
+                                    type="button"
+                                    className={cn(
+                                        '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-all',
+                                        textColor === 'light' && 'text-white',
+                                        textColor === 'dark' && 'text-black',
+                                    )}
+                                    onClick={() => setMobileMenuOpen(true)}
+                                >
+                                    <span className="sr-only">Open main menu</span>
+                                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                                </button>
+                            </div>
+                            <div className="hidden lg:flex lg:gap-x-12">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                                        href={item.href as any}
+                                        className={cn(
+                                            'text-sm font-semibold leading-6 text-white transition-all',
+                                            textColor === 'light' && 'text-white',
+                                            textColor === 'dark' && 'text-black',
+                                        )}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
-                            <div className="py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                                >
-                                    Log in
-                                </a>
+                            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                                {isLoggedIn === undefined ? (
+                                    <Skeleton />
+                                ) : isLoggedIn ? (
+                                    <div className="flex gap-3">
+                                        <Badge content="5" size="sm" color="primary">
+                                            <Button
+                                                isIconOnly
+                                                variant={'light'}
+                                                className="p-2"
+                                                type="button"
+                                                onClick={cart.openCart}
+                                            >
+                                                <ShoppingCartIcon
+                                                    className={cn(
+                                                        textColor === 'light' && 'text-white',
+                                                        textColor === 'dark' && 'text-black',
+                                                    )}
+                                                />
+                                            </Button>
+                                        </Badge>
+                                        <ProfileDropdown>
+                                            <Avatar icon={<AvatarIcon />}></Avatar>
+                                        </ProfileDropdown>
+                                    </div>
+                                ) : (
+                                    <button
+                                        onClick={onOpen}
+                                        className={cn(
+                                            'text-sm font-semibold leading-6',
+                                            textColor === 'light' && 'text-white',
+                                            textColor === 'dark' && 'text-black',
+                                        )}
+                                    >
+                                        Log in <span aria-hidden="true">&rarr;</span>
+                                    </button>
+                                )}
                             </div>
-                        </div>
-                    </div>
-                </Dialog.Panel>
-            </Dialog>
-        </header>
+                        </nav>
+                        <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+                            <div className="fixed inset-0 z-50" />
+                            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-500/10">
+                                <div className="flex items-center justify-between">
+                                    <a href="#" className="-m-1.5 p-1.5">
+                                        <span className="sr-only">Your Company</span>
+                                        <Image className="h-12 w-24 scale-[200%] " src={logo} alt="" />
+                                    </a>
+                                    <button
+                                        type="button"
+                                        className={cn(
+                                            '-m-2.5 rounded-md p-2.5',
+                                            textColor === 'light' && 'text-white',
+                                            textColor === 'dark' && 'text-black',
+                                        )}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        <span className="sr-only">Close menu</span>
+                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                                    </button>
+                                </div>
+                                <div className="mt-6 flow-root">
+                                    <div className="-my-6 divide-y divide-black/25">
+                                        <div className="space-y-2 py-6">
+                                            {navigation.map((item) => (
+                                                <a
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-black hover:bg-gray-200"
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            ))}
+                                        </div>
+                                        <div className="py-6">
+                                            <a
+                                                onClick={onOpen}
+                                                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-black hover:bg-gray-200"
+                                            >
+                                                Log in
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Dialog.Panel>
+                        </Dialog>
+                    </header>
+                )}
+            </LoginModal>
+        </>
     );
-}
+});
+
+export default Header;

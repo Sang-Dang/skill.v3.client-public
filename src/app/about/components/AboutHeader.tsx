@@ -1,10 +1,10 @@
 'use client';
 
+import Headers from '@/common/components/Header';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
-import Headers from '@/common/components/Header';
 
-export default function HomeHeader() {
+export default function AboutHeader() {
     const [isHeaderVisible, setIsHeaderVisible] = useState(false);
     const { scrollY } = useScroll();
     const headerRef = useRef<HTMLDivElement>(null);
@@ -21,11 +21,5 @@ export default function HomeHeader() {
         }
     });
 
-    return (
-        <Headers
-            ref={headerRef}
-            headerBackground={isHeaderVisible ? 'light' : 'transparent'}
-            textColor={isHeaderVisible ? 'dark' : 'light'}
-        />
-    );
+    return <Headers ref={headerRef} headerBackground={isHeaderVisible ? 'light' : 'transparent'} textColor="dark" />;
 }

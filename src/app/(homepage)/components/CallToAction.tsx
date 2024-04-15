@@ -1,9 +1,27 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import React from 'react';
 
 export default function CallToAction() {
     return (
         <section className="relative isolate overflow-hidden bg-gray-900">
-            <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <motion.div
+                className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8"
+                initial={{
+                    transform: 'scale(1.3)',
+                }}
+                whileInView={{
+                    transform: 'scale(1)',
+                    transition: {
+                        duration: 0.5,
+                        ease: 'easeOut',
+                    },
+                }}
+                viewport={{
+                    once: true,
+                }}
+            >
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         Boost your productivity.
@@ -26,7 +44,7 @@ export default function CallToAction() {
                         </a>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             <svg
                 viewBox="0 0 1024 1024"
                 className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
