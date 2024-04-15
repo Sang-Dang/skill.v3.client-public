@@ -1,8 +1,7 @@
-import '@/firebase';
-// seperator
-import Providers from '@/common/Providers';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { App } from 'antd';
 import type { Metadata } from 'next';
-import './globals.css';
+import './globals.scss';
 
 export const metadata: Metadata = {
     title: 'Skillcetera',
@@ -17,7 +16,9 @@ export default function RootLayout({
     return (
         <html lang="en" className="h-full">
             <body className="h-full">
-                <Providers>{children}</Providers>
+                <AntdRegistry>
+                    <App className="h-full w-full">{children}</App>
+                </AntdRegistry>
             </body>
         </html>
     );
