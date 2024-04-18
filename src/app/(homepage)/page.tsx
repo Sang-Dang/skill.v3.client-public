@@ -2,6 +2,7 @@
 
 import mainBanner from '@/app/(homepage)/images/main-banner.jpg';
 import AboutTheme from '@/app/(homepage)/sections/AboutTheme';
+import Activities from '@/app/(homepage)/sections/Activitites';
 import CallToAction from '@/app/(homepage)/sections/CallToAction';
 import HomeHeader from '@/app/(homepage)/sections/HomeHeader';
 import PreviousEvents from '@/app/(homepage)/sections/PreviousEvents';
@@ -103,14 +104,15 @@ export default function RootPage() {
                     </div>
                 </section>
                 <AboutTheme ref={aboutRef as any} />
-                <div>
-                    <ParallaxText baseVelocity={-5}>TEDx FPT University HCMC</ParallaxText>
-                    <ParallaxText baseVelocity={5}>Consistency is Flexibility </ParallaxText>
-                </div>
                 <PreviousEvents />
                 {/* <AboutTEDx /> */}
                 <CallToAction />
                 <Speakers />
+                <div>
+                    <ParallaxText baseVelocity={-5}>TEDx FPT University HCMC</ParallaxText>
+                    <ParallaxText baseVelocity={5}>Consistency is Flexibility </ParallaxText>
+                </div>
+                <Activities />
                 <Testimonial />
                 <Sponsors />
             </div>
