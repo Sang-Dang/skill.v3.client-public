@@ -1,20 +1,16 @@
 'use client';
 
 import logo from '@/assets/logo.svg';
-import Auth from '@/common/context/AuthContext';
-import Cart from '@/common/context/CartContext';
 import { cn } from '@/common/util/cn';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ForwardedRef, forwardRef, useEffect, useState } from 'react';
+import { ForwardedRef, forwardRef, useState } from 'react';
 
 const navigation = [
-    { name: 'About us', href: '/about' },
-    { name: 'Tickets', href: '' },
+    { name: 'Tickets', href: 'https://beta.ticketbox.vn/tedxfptuniversityhcmc2024-startsmall-89808' },
     { name: 'Merchandise', href: '' },
-    { name: 'Contact', href: '/contact' },
 ];
 
 type Props = {
@@ -26,14 +22,7 @@ const Header = forwardRef(function HeaderComponent(
     { textColor = 'dark', headerBackground = 'light' }: Props,
     ref?: ForwardedRef<HTMLDivElement>,
 ) {
-    const cart = Cart.useCart();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState<undefined | boolean>(undefined);
-    const auth = Auth.useAuth();
-
-    useEffect(() => {
-        setIsLoggedIn(auth.isLoggedIn());
-    }, [auth]);
 
     return (
         <>
