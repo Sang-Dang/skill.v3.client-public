@@ -1,16 +1,26 @@
-import AboutTEDx from '@/app/(homepage)/components/AboutTEDx';
-import AboutTheme from '@/app/(homepage)/components/AboutTheme';
-import CallToAction from '@/app/(homepage)/components/CallToAction';
-import HomeHeader from '@/app/(homepage)/components/HomeHeader';
-import Sponsors from '@/app/(homepage)/components/Sponsors';
+'use client';
+
 import mainBanner from '@/app/(homepage)/images/main-banner.jpg';
+import AboutTheme from '@/app/(homepage)/sections/AboutTheme';
+import CallToAction from '@/app/(homepage)/sections/CallToAction';
+import HomeHeader from '@/app/(homepage)/sections/HomeHeader';
+import PreviousEvents from '@/app/(homepage)/sections/PreviousEvents';
+import Speakers from '@/app/(homepage)/sections/Speakers';
+import Sponsors from '@/app/(homepage)/sections/Sponsors';
+import Testimonial from '@/app/(homepage)/sections/Testimonial';
 import Footer from '@/common/components/Footer';
 import ParallaxText from '@/common/components/ParallaxText';
-import { Button } from '@nextui-org/react';
+import { Button, Link } from '@nextui-org/react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRef } from 'react';
 
 export default function RootPage() {
+    const aboutRef = useRef<HTMLDivElement>();
+
+    function handleLearnMore() {
+        aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
         <>
             <HomeHeader />
@@ -38,11 +48,14 @@ export default function RootPage() {
                         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                                 <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
-                                    Announcing the 3rd return of our yearly event.{' '}
-                                    <a href="#" className="font-semibold text-white">
+                                    Announcing the 4th return of our yearly event.{' '}
+                                    <Link
+                                        onClick={handleLearnMore}
+                                        className="cursor-pointer text-xs font-semibold text-white"
+                                    >
                                         <span className="absolute inset-0" aria-hidden="true" />
                                         Read more <span aria-hidden="true">&rarr;</span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="text-center">
@@ -54,7 +67,10 @@ export default function RootPage() {
                                     - Skillcetera under FPT University for the past four years.
                                 </p>
                                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                                    <Link href="/tickets">
+                                    <a
+                                        href="https://beta.ticketbox.vn/tedxfptuniversityhcmc2024-startsmall-89808"
+                                        target="_blank"
+                                    >
                                         <Button
                                             type="button"
                                             color="primary"
@@ -62,10 +78,13 @@ export default function RootPage() {
                                         >
                                             Get tickets
                                         </Button>
-                                    </Link>
-                                    <a href="#" className="text-sm font-semibold leading-6 text-white">
-                                        Learn more <span aria-hidden="true">→</span>
                                     </a>
+                                    <Link
+                                        onClick={handleLearnMore}
+                                        className="cursor-pointer text-sm font-semibold leading-6 text-white"
+                                    >
+                                        Learn more <span aria-hidden="true">→</span>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -83,13 +102,16 @@ export default function RootPage() {
                         </div>
                     </div>
                 </section>
-                <AboutTheme />
-                <AboutTEDx />
-                <CallToAction />
+                <AboutTheme ref={aboutRef as any} />
                 <div>
                     <ParallaxText baseVelocity={-5}>TEDx FPT University HCMC</ParallaxText>
                     <ParallaxText baseVelocity={5}>Consistency is Flexibility </ParallaxText>
                 </div>
+                <PreviousEvents />
+                {/* <AboutTEDx /> */}
+                <CallToAction />
+                <Speakers />
+                <Testimonial />
                 <Sponsors />
             </div>
             <Footer className="mt-32" />

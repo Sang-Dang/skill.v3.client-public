@@ -7,13 +7,13 @@ import themeImage4 from '@/app/(homepage)/images/home-theme-4.jpg';
 import { Button } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
+import { forwardRef, type ForwardedRef } from 'react';
 
 const MotionImage = motion(Image);
 
-export default function AboutTheme() {
+const AboutTheme = forwardRef(function Component(_, ref: ForwardedRef<HTMLDivElement>) {
     return (
-        <section className="overflow-hidden bg-white">
+        <section className="overflow-hidden bg-white" id="about" ref={ref}>
             <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
                     <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
@@ -30,11 +30,14 @@ export default function AboutTheme() {
                             something far more fascinating and significant.
                         </p>
                         <div className="mt-10 flex">
-                            <Link href="/tickets">
+                            <a
+                                href="https://beta.ticketbox.vn/tedxfptuniversityhcmc2024-startsmall-89808"
+                                target="_blank"
+                            >
                                 <Button color="primary" className="px-3.5 py-2.5 text-sm font-semibold">
                                     Get your tickets <span aria-hidden="true">&rarr;</span>
                                 </Button>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
@@ -97,4 +100,6 @@ export default function AboutTheme() {
             </div>
         </section>
     );
-}
+});
+
+export default AboutTheme;
