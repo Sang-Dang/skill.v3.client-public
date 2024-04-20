@@ -1,60 +1,18 @@
 'use client';
 
-import denisDang from '@/app/(homepage)/images/denis-dang.jpg';
-import duUyen from '@/app/(homepage)/images/du-uyen.jpg';
-import hhTrung from '@/app/(homepage)/images/hh-trung.jpg';
-import davidKaye from '@/app/(homepage)/images/david-kaye.jpg';
-import markBain from '@/app/(homepage)/images/mark-bain.jpg';
-import ncThanh from '@/app/(homepage)/images/nc-thanh.jpg';
-import nttQuan from '@/app/(homepage)/images/ntt-quan.jpg';
-import javix from '@/app/(homepage)/images/javix.jpg';
+import HieuNM from '@/app/(homepage)/images/HieuNM.jpg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Button } from '@nextui-org/react';
 
 const people = [
     {
-        name: 'Hoàng Hoa Trung',
-        role: 'FORBES 30UNDER30 VIETNAM',
-        imageUrl: hhTrung,
-        bio: 'Founder of “Nuôi em” and “Sức mạnh 2000”',
+        name: 'Ngô Minh Hiếu',
+        role: 'Cyber Security Expert',
+        imageUrl: HieuNM,
+        bio: 'Mr. Ngo Minh Hieu, also known as Hieu PC, is an expert in the field of information security and safety. He currently works at the National Cyber Security Surveillance Center (NSCS) and operates the ChongLuaDao project, which was founded at the end of 2020. This project has been successful in raising awareness and preventing over-the-air fraud in Vietnamese cyberspace. Due to his significant contributions, he is also known by the nickname "White Hat Hacker".',
+        href: 'https://www.facebook.com/photo?fbid=1228206118940692&set=a.682533043508005',
     },
-    {
-        name: 'Denis Đặng',
-        role: 'Creative director/actor',
-        imageUrl: denisDang,
-        bio: 'The manip wizard of creative art',
-    },
-    {
-        name: 'Mark Bain',
-        role: 'Graphic Designer',
-        imageUrl: markBain,
-        bio: "Creative Director of Pizza 4P's",
-    },
-    {
-        name: 'Du Uyên',
-        role: 'Singer - a shining star of the Vietnamese music scene',
-        imageUrl: duUyen,
-        bio: 'With famous songs such as Bánh Mì Không, Khó Vẽ Nụ Cười, Duyên Duyên Số Số, she has won the hearts of young audiences.',
-    },
-    {
-        name: 'Nguyễn Trần Trung Quân',
-        role: 'Ballad singer and National Vocal Music Teacher',
-        imageUrl: nttQuan,
-        bio: 'In 2015, he was the youngest singer in Vietnam to receive a double music award for Album of the Year/Khoi Hanh Album - his first physical album in his career—and Outstanding New Artist of the Year.',
-    },
-    {
-        name: 'DJ Javix - Lê Anh Dũng',
-        role: 'Music producer',
-        imageUrl: javix,
-        bio: 'Javix has made his own mark in various roles, various roles, from music producer, piano player, DJ, composer, and recording artist to music director and producer.',
-    },
-    {
-        name: 'Nguyễn Chí Thành',
-        role: 'A promising musical talent',
-        imageUrl: ncThanh,
-        bio: 'A top student in the Violin major at Hue Academy of Music, both at the junior college and university levels',
-    },
-    // More people...
 ];
 
 export default function Speakers() {
@@ -72,7 +30,7 @@ export default function Speakers() {
                 </div>
                 <ul
                     role="list"
-                    className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2"
+                    className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2"
                 >
                     {people.map((person, index) => (
                         <motion.li
@@ -93,17 +51,28 @@ export default function Speakers() {
                                 duration: 0.5,
                                 ease: 'easeOut',
                             }}
+                            className="rounded-2xl bg-white shadow-md transition-all hover:shadow-xl"
                         >
                             <Image
-                                className="aspect-[1] w-full rounded-2xl object-cover"
+                                className="aspect-[1] w-full rounded-2xl object-cover shadow-sm"
                                 src={person.imageUrl}
                                 alt=""
                             />
-                            <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">{person.name}</h3>
-                            <p className="text-base leading-7 text-gray-600">{person.role}</p>
-                            <p className="mt-4 line-clamp-2 text-ellipsis text-base leading-7 text-gray-600">
-                                {person.bio}
-                            </p>
+                            <div className="p-5 pt-0">
+                                <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">{person.name}</h3>
+                                <p className="text-base leading-7 text-gray-600">{person.role}</p>
+                                <p className="mt-4 line-clamp-2 text-ellipsis text-base leading-7 text-gray-600">
+                                    {person.bio}
+                                </p>
+                                <Button
+                                    className="mt-6"
+                                    size="sm"
+                                    color="primary"
+                                    onClick={() => (window.location.href = person.href)}
+                                >
+                                    View more
+                                </Button>
+                            </div>
                         </motion.li>
                     ))}
                 </ul>

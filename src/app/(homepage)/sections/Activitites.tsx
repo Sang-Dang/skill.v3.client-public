@@ -8,7 +8,7 @@ import image from '@/app/(homepage)/images/banner.png';
 export default function Activities() {
     return (
         <div>
-            <SectionIntro title="Pre-event activties" className="">
+            <SectionIntro title="Pre-event & Event activties" className="">
                 <p>
                     Prior to the main event, various activities have been undertaken by the organizers to promote
                     program awareness and communication.
@@ -35,10 +35,6 @@ export default function Activities() {
                             This is the main activity eagerly anticipated by everyone when holding a ticket to the
                             event. Attendees will immerse themselves in a jubilant and dignified atmosphere, gathering
                             to listen to valuable insights from the event&apos;s distinguished speakers.
-                        </ListItem>
-                        <ListItem title="Classtour - Apr 18-20, 2024">
-                            A special day will be held at the FPT University campus where information about the TEDx
-                            program will be promoted and disseminated to every corner and classroom of the university.
                         </ListItem>
                         <ListItem title="Event Experience - May 12, 2024">
                             A series of interconnected interactive activities within the &quot;Event Experience&quot;

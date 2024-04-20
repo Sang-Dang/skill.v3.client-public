@@ -13,7 +13,7 @@ const posts: PostType[] = [
     {
         id: 1,
         title: 'Season 1: Extraordinary Steps',
-        href: '#',
+        href: 'https://fb.watch/rzzGRpgAzV/',
         description:
             "Extraordinary steps are always a key element in each individual's journey of personal development. They foster growth, resilience, and readiness to confront future challenges with greater strength",
         imageUrl: s1Banner,
@@ -27,7 +27,7 @@ const posts: PostType[] = [
     {
         id: 2,
         title: 'Season 2: Value Transition',
-        href: '#',
+        href: 'https://fb.watch/rzA1-6c8v_/',
         description:
             'Inspired by the image of “Chim Lạc” throughout - the transition, inheritance, and enhancement of the value of the predecessors are not only a challenge but also an opportunity for students to grasp, preserve, promote, and spread across the world.',
         imageUrl: s2Banner,
@@ -41,7 +41,7 @@ const posts: PostType[] = [
     {
         id: 3,
         title: 'Season 3: With or Without?',
-        href: '#',
+        href: 'https://fb.watch/rzA6Kei_7Q/',
         description:
             'Drawing from the Japanese concept of "Ma", which represents “gap” and “pause”. Similarly in life, we must discern when to pause, let go, keep, or eliminate for balance.',
         imageUrl: s3Banner,

@@ -25,7 +25,7 @@ export default function RootPage() {
     return (
         <>
             <HomeHeader />
-            <div className="flex flex-col gap-24">
+            <div className="flex flex-col gap-48">
                 <section className=" bg-gray-900">
                     <div className="relative isolate overflow-hidden">
                         <Image
@@ -103,17 +103,14 @@ export default function RootPage() {
                         </div>
                     </div>
                 </section>
-                <AboutTheme ref={aboutRef as any} />
                 <PreviousEvents />
-                {/* <AboutTEDx /> */}
-                <CallToAction />
+                <AboutTheme ref={aboutRef as any} />
                 <Speakers />
-                <div>
-                    <ParallaxText baseVelocity={-5}>TEDx FPT University HCMC</ParallaxText>
-                    <ParallaxText baseVelocity={5}>Consistency is Flexibility </ParallaxText>
-                </div>
                 <Activities />
-                <Testimonial />
+                <div>
+                    <CallToAction />
+                    <Testimonial />
+                </div>
                 <Sponsors />
             </div>
             <Footer className="mt-32" />

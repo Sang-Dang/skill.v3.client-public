@@ -1,5 +1,5 @@
 import type { PostType } from '@/app/(homepage)/utils/PostType';
-import { AnimatePresence, AnimateSharedLayout, motion, type Variant, type Variants } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -69,7 +69,7 @@ export default function EventCard({ post, index = 0 }: { post: PostType; index?:
                             </div>
                         </div>
                         <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                            <a href={post.href}>
+                            <a target="_blank" href={post.href}>
                                 <span className="absolute inset-0" />
                                 {post.title}
                             </a>
@@ -79,7 +79,7 @@ export default function EventCard({ post, index = 0 }: { post: PostType; index?:
             </AnimatePresence>
             <AnimatePresence>
                 {isHovered && (
-                    <motion.div
+                    <motion.a
                         initial={{
                             opacity: 0,
                             y: 20,
@@ -92,7 +92,9 @@ export default function EventCard({ post, index = 0 }: { post: PostType; index?:
                             opacity: 0,
                             y: 20,
                         }}
-                        className="absolute left-0 top-0 flex h-full w-full flex-col bg-black/70 p-8 text-white"
+                        className="absolute left-0 top-0 flex h-full w-full cursor-pointer flex-col bg-black/70 p-8 text-white"
+                        href={post.href}
+                        target="_blank"
                     >
                         <div className="flex-grow">{post.description}</div>
                         <motion.div
@@ -131,13 +133,13 @@ export default function EventCard({ post, index = 0 }: { post: PostType; index?:
                                 </div>
                             </div>
                             <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                                <a href={post.href}>
+                                <a target="_blank" href={post.href}>
                                     <span className="absolute inset-0" />
                                     {post.title}
                                 </a>
                             </h3>
                         </motion.div>
-                    </motion.div>
+                    </motion.a>
                 )}
             </AnimatePresence>
         </motion.article>
