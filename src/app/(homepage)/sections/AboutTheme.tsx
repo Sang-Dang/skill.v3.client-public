@@ -1,9 +1,6 @@
 'use client';
 
-import themeImage1 from '@/app/(homepage)/images/bg-1.jpg';
 import themeImage2 from '@/app/(homepage)/images/bg-1.jpg';
-import themeImage3 from '@/app/(homepage)/images/s4-banner.jpg';
-import themeImage4 from '@/app/(homepage)/images/home-theme-4.jpg';
 import { Button } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

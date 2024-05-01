@@ -1,6 +1,6 @@
 'use client';
 
-import HieuNM from '@/app/(homepage)/images/hieuNM.jpg';
+import HieuNM from '@/app/(homepage)/images/HieuNM.jpg';
 import Teresa from '@/app/(homepage)/images/teresa.jpg';
 import TrinhDN from '@/app/(homepage)/images/trinhDN.jpg';
 import OanhH from '@/app/(homepage)/images/oanhH.jpg';

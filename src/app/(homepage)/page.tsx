@@ -10,7 +10,6 @@ import Speakers from '@/app/(homepage)/sections/Speakers';
 import Sponsors from '@/app/(homepage)/sections/Sponsors';
 import Testimonial from '@/app/(homepage)/sections/Testimonial';
 import Footer from '@/common/components/Footer';
-import ParallaxText from '@/common/components/ParallaxText';
 import { Button, Link } from '@nextui-org/react';
 import Image from 'next/image';
 import { useRef } from 'react';
