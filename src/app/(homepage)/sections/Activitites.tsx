@@ -3,12 +3,12 @@ import { FadeIn } from '@/app/(homepage)/utils/FadeIn';
 import { List, ListItem } from '@/app/(homepage)/utils/List';
 import { SectionIntro } from '@/app/(homepage)/utils/SectionIntro';
 import { StylizedImage } from '@/app/(homepage)/utils/StylizedImage';
-import image from '@/app/(homepage)/images/banner.png';
+import image from '@/app/(homepage)/images/group-activities.png';
 
 export default function Activities() {
     return (
         <div>
-            <SectionIntro title="Pre-event & Event activties" className="">
+            <SectionIntro title="Event activties" className="">
                 <p>
                     Prior to the main event, various activities have been undertaken by the organizers to promote
                     program awareness and communication.
