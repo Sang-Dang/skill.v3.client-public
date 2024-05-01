@@ -55,16 +55,19 @@ export default function Footer(props: Props) {
     return (
         <footer className={cn('bg-black/80', props.className)}>
             <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-                <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                <nav className="mb-6 sm:flex sm:columns-2 sm:justify-center sm:space-x-12" aria-label="Footer">
                     {navigation.main.map((item) => (
-                        <div key={item.name} className="pb-6">
-                            <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-gray-200">
+                        <div key={item.name} className="pb-6 text-center">
+                            <a
+                                href={item.href}
+                                className="text-center text-sm leading-6 text-gray-300 hover:text-gray-200"
+                            >
                                 {item.name}
                             </a>
                         </div>
                     ))}
                 </nav>
-                <div className="mt-10 flex justify-center space-x-10">
+                <div className="mt-10 flex justify-center space-x-10 ">
                     {navigation.social.map((item) => (
                         <a key={item.name} href={item.href} className="text-gray-200 hover:text-gray-400">
                             <span className="sr-only">{item.name}</span>
