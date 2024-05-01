@@ -1,7 +1,7 @@
 'use client';
 
-import themeImage1 from '@/app/(homepage)/images/s4-profile.jpg';
-import themeImage2 from '@/app/(homepage)/images/s4-banner.jpg';
+import themeImage1 from '@/app/(homepage)/images/bg-1.jpg';
+import themeImage2 from '@/app/(homepage)/images/bg-1.jpg';
 import themeImage3 from '@/app/(homepage)/images/s4-banner.jpg';
 import themeImage4 from '@/app/(homepage)/images/home-theme-4.jpg';
 import { Button } from '@nextui-org/react';
@@ -45,7 +45,7 @@ const AboutTheme = forwardRef(function Component(_, ref: ForwardedRef<HTMLDivEle
                             <MotionImage
                                 src={themeImage2}
                                 alt=""
-                                className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                                className="w-full max-w-none rounded-2xl bg-gray-50 object-cover sm:aspect-[7/5] sm:w-[37rem]"
                                 initial={{ opacity: 0, y: -100 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{
@@ -54,7 +54,7 @@ const AboutTheme = forwardRef(function Component(_, ref: ForwardedRef<HTMLDivEle
                                 transition={{ duration: 0.5, delay: 0.2 }}
                             />
                         </div>
-                        <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
+                        {/* <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
                             <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
                                 <MotionImage
                                     src={themeImage3}
@@ -94,7 +94,7 @@ const AboutTheme = forwardRef(function Component(_, ref: ForwardedRef<HTMLDivEle
                                     transition={{ duration: 0.5, delay: 0.5 }}
                                 />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
