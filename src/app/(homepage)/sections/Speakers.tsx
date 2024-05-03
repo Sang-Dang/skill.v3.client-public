@@ -5,6 +5,7 @@ import Teresa from '@/app/(homepage)/images/teresa.jpg';
 import TrinhDN from '@/app/(homepage)/images/trinhDN.jpg';
 import OanhH from '@/app/(homepage)/images/oanhH.jpg';
 import LongDM from '@/app/(homepage)/images/longDM.jpg';
+import TrangT from '@/app/(homepage)/images/trangT.jpg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '@nextui-org/react';
@@ -44,6 +45,13 @@ const people = [
         imageUrl: LongDM,
         bio: 'Photographer Duong Minh Long is known as the only Vietnamese photojournalist covering photo stories of coups and historical events in Russia for over a decade. In Vietnam, he served as the head of the photography department at Lao Dong Newspaper in Ho Chi Minh City, contributing unique and sharp-angle photo stories and becoming a prominent face in Vietnamese journalism in the 1990s.',
         href: 'https://www.facebook.com/photo?fbid=1231395011955136&set=a.682533043508005',
+    },
+    {
+        name: 'Thạch Trang',
+        role: 'Vlogger/Content Creator',
+        imageUrl: TrangT,
+        bio: "As a vlogger and student in Germany with the YouTube channel My20s boasting over 500,000 subscribers, Thach Trang is famous for sharing videos about daily life, studying, and experiencing German culture in a genuine and approachable way. Through the lens of a student's daily life or exploring the world, the My20s girl has inspired many young people with her positive energy, optimistic spirit, and simple, meaningful lifestyle.",
+        href: 'https://www.facebook.com/photo/?fbid=1230162952078342&set=a.682533043508005',
     },
 ];
 
